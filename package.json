@@ -1,0 +1,29 @@
+{
+  "name": "angularjs-learnupon",
+  "version": "1.0.0",
+  "description": "Test project to connect to the LearnUpon API.",
+  "main": "app/app.module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaron-meaney/angularjs-learnupon-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaron-meaney/angularjs-learnupon-test/issues"
+  },
+  "homepage": "https://github.com/aaron-meaney/angularjs-learnupon-test#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "^3.1.0",
+    "gulp-rename": "^1.4.0"
+  },
+  "dependencies": {
+    "angular": "^1.7.7"
+  }
+}
