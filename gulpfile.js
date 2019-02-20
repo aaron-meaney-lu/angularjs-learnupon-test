@@ -9,7 +9,7 @@ const templateCache = require('gulp-angular-templatecache');
 const jsSources = ['./app/app.module.js' ,'./app/app.config.js' ,'./app/components/*/*.js']
 const templateSources = ['./app/templates/*.html'];
 const htmlSources = ['./index.html'];
-const allSources = jsSources.concat(htmlSources);
+const allSources = jsSources.concat(htmlSources, templateSources);
 
 const buildDir = './build';
 
