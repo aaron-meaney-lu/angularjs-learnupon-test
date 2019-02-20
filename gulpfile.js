@@ -6,7 +6,10 @@ const minify = require('gulp-minify');
 const mergeStream = require('merge-stream');
 const templateCache = require('gulp-angular-templatecache');
 
-const jsSources = ['./app/app.module.js' ,'./app/app.config.js' ,'./app/components/*/*.js']
+const jsSources = ['./app/app.module.js'
+                  ,'./app/app.config.js'
+                  ,'./app/services/*.js'
+                  ,'./app/controllers/*.js']
 const templateSources = ['./app/templates/*.html'];
 const htmlSources = ['./index.html'];
 const allSources = jsSources.concat(htmlSources, templateSources);
