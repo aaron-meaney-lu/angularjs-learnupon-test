@@ -1,6 +1,6 @@
 angular.module('mainApp')
   .service('LearnUponService', function() {
     this.testFunction = function() {
-      return 'This service works!';
+      return '<%ENV%>LEARNUPON_TEST_KEY<%ENV%>';
     };
   });

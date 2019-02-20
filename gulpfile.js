@@ -1,8 +1,11 @@
+require('dotenv').config();
+
 const gulp = require('gulp');
 const watch = require('gulp-watch');
 const clean = require('gulp-clean');
 const concat = require('gulp-concat');
 const minify = require('gulp-minify');
+const replace = require('gulp-replace');
 const mergeStream = require('merge-stream');
 const templateCache = require('gulp-angular-templatecache');
 
@@ -26,6 +29,12 @@ gulp.task('clean', function() {
 
 gulp.task('build-js', function() {
   const jsStream = gulp.src(jsSources)
+    .pipe(replace(/(?<=<%ENV%>)(.*)(?=<%ENV%>)/gm, function(match) {
+      return process.env[match]
+    }))
+    .pipe(replace('<%ENV%>', ''))
+
+    // https://regex101.com/r/v7OE1q/1 (Regex for between ENV)
 
   const templateStream = gulp.src(templateSources)
     .pipe(templateCache({module: 'mainApp'}));
