@@ -1,4 +1,4 @@
-mainApp.controller('studentController', function($scope) {
+mainApp.controller('studentController', ['$scope', function($scope) {
   $scope.student = {
       firstName: "Aaron",
       lastName: "Meaney",
@@ -9,4 +9,4 @@ mainApp.controller('studentController', function($scope) {
          return studentObject.firstName + " " + studentObject.lastName;
       }
    };
-});
+}]);
