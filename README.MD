@@ -6,28 +6,33 @@ ___
 
 ## Usage
 
-### Install node modules
+### Install Node Module Dependencies
 ```bash
   npm install
 ```
 
-### Build once
+### Run Webserver
+```bash
+  npm start
+```
+
+### Clean & Build (Recommended)
 ```bash
   gulp
 ```
 
-or
+### Build
 
 ```bash
   gulp build
 ```
 
-### Build on file changes
+### Build when Files Changed
 ```bash
   gulp build-watch
 ```
 
-### Clean/Remove build folder
+### Clean Build Folder
 ```bash
   gulp clean
 ```
