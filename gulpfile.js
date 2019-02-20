@@ -3,9 +3,15 @@ const watch = require('gulp-watch');
 const clean = require('gulp-clean');
 const concat = require('gulp-concat');
 const minify = require('gulp-minify');
+const mergeStream = require('merge-stream');
 const templateCache = require('gulp-angular-templatecache');
 
 const jsSources = ['./app/app.module.js' ,'./app/app.config.js' ,'./app/components/*/*.js']
+const templateSources = ['./app/templates/*.html'];
+const htmlSources = ['./index.html'];
+const allSources = jsSources.concat(htmlSources);
+
+const buildDir = './build';
 
 gulp.task('clean', function() {
   return gulp.src('build', {
@@ -16,7 +22,12 @@ gulp.task('clean', function() {
 });
 
 gulp.task('build-js', function() {
-  return gulp.src(jsSources)
+  const jsStream = gulp.src(jsSources)
+
+  const templateStream = gulp.src(templateSources)
+    .pipe(templateCache({module: 'mainApp'}));
+
+  return mergeStream(jsStream, templateStream)
     .pipe(concat('app.js'))
     .pipe(minify({
       ext: {
@@ -24,24 +35,18 @@ gulp.task('build-js', function() {
       },
       noSource: true
     }))
-    .pipe(gulp.dest('./build'))
+    .pipe(gulp.dest(buildDir));
 });
 
 gulp.task('build-html', function() {
-  return gulp.src(['./index.html'])
-    .pipe(gulp.dest('./build'));
+  return gulp.src(htmlSources)
+    .pipe(gulp.dest(buildDir));
 });
 
-gulp.task('build-templates', function() {
-  return gulp.src(['./app/templates/*.html'])
-    .pipe(templateCache({module: 'mainApp'}))
-    .pipe(gulp.dest('./build'))
-});
-
-gulp.task('build', gulp.parallel('build-js', 'build-templates', 'build-html'));
+gulp.task('build', gulp.parallel('build-js', 'build-html'));
 
 gulp.task('build-watch', function() {
-  return watch(jsSources, gulp.series(['default']));
+  return watch(allSources, gulp.series(['default']));
 });
 
 gulp.task('default', gulp.series(['clean', 'build']));
