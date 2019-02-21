@@ -15,7 +15,8 @@ const jsSources = ['./app/app.module.js'
                   ,'./app/controllers/*.js']
 const templateSources = ['./app/templates/*.html'];
 const htmlSources = ['./index.html'];
-const allSources = jsSources.concat(htmlSources, templateSources);
+const envSource = ['./.env']
+const allSources = jsSources.concat(htmlSources, templateSources, envSource);
 
 const buildDir = './build';
 
