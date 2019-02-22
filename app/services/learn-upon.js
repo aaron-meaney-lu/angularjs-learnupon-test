@@ -188,11 +188,28 @@ angular.module('mainApp')
 
     this.updateUser = function(user, cb) {
       let foundUserIndex = this._findUserIndex(user);
+      let errorMessages = [];
+
+      if (!user.first_name) {
+        errorMessages.push("First name invalid.");
+      }
+
+      if (!user.last_name) {
+        errorMessages.push("Last name invalid.");
+      }
+
+      if (!user.email) {
+        errorMessages.push("Email invalid.");
+      }
 
       if (foundUserIndex === -1) {
+        errorMessages.push("User does not exist on list. Please add user first.");
+      }
+
+      if (errorMessages.length > 0) {
         return cb({
           success: false,
-          message: 'User not found in list!'
+          messages: errorMessages
         });
       }
 
@@ -200,9 +217,9 @@ angular.module('mainApp')
 
       return cb({
         success: true,
-        message: 'User successfully updated!'
+        messages: ['User successfully updated!']
       });
-    }
+    };
 
     this._findUserIndex = function(user) {
       for (let i = 0; i < this.usersList.user.length; i++) {

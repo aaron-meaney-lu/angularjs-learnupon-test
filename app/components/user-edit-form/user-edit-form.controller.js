@@ -1,6 +1,6 @@
 angular
   .module('mainApp')
-  .controller('UserFormController', ['$scope', '$routeParams', '$window', 'LearnUponService',
+  .controller('UserEditFormController', ['$scope', '$routeParams', '$window', 'LearnUponService',
     function($scope, $routeParams, $window, LearnUponService) {
       const $ctrl = this;
 
@@ -20,7 +20,7 @@ angular
           if (response.success) {
             $window.location.href = `#!/user/${$ctrl.user.id}`;
           } else {
-            alert(`Error saving user: ${response.message}`);
+            alert(`Error saving user: ${response.messages}`);
           }
         });
       };
