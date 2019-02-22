@@ -185,4 +185,31 @@ angular.module('mainApp')
 
       $timeout(() => {cb(foundUser)}, 1000);
     };
+
+    this.updateUser = function(user, cb) {
+      let foundUserIndex = this._findUserIndex(user);
+
+      if (foundUserIndex === -1) {
+        return cb({
+          success: false,
+          message: 'User not found in list!'
+        });
+      }
+
+      this.usersList.user[foundUserIndex] = user;
+
+      return cb({
+        success: true,
+        message: 'User successfully updated!'
+      });
+    }
+
+    this._findUserIndex = function(user) {
+      for (let i = 0; i < this.usersList.user.length; i++) {
+        if (this.usersList.user[i].id == user.id) {
+          return i;
+        }
+      }
+      return -1;
+    }
   }]);

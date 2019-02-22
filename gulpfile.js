@@ -15,7 +15,7 @@ const jsSources = ['./app/app.module.js'
                   ,'./app/components/*/*.controller.js'
                   ,'./app/components/*/*.component.js'
                   ,'./app/controllers/*.js']
-const templateSources = ['./app/templates/*.html'
+const templateSources = ['./app/pages/*.html'
                         ,'./app/components/*/*.template.html'];
 const htmlSources = ['./index.html'];
 const envSource = ['./.env']
