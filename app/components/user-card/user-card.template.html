@@ -1,8 +1,15 @@
-<em>{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}</em><br>
-<u>{{$ctrl.user.email}}</u><br>
+<span ng-show="$ctrl.loadStatus === 'loaded'">
+  <em>{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}</em><br>
+  <u>{{$ctrl.user.email}}</u><br>
 
-<a href="{{$ctrl.links.show}}">[Show Details]</a>
-<a href="{{$ctrl.links.edit}}">[Edit User]</a>
-<a href="{{$ctrl.links.delete}}">[Delete User]</a>
-
+  <a href="{{$ctrl.links.show}}">[Show Details]</a>
+  <a href="{{$ctrl.links.edit}}">[Edit User]</a>
+  <a href="{{$ctrl.links.delete}}">[Delete User]</a>
+</span>
+<span ng-show="$ctrl.loadStatus === 'unloaded'">
+  Loading...
+</span>
+<span ng-show="$ctrl.loadStatus === 'error'">
+  Not Found
+</span>
 <hr>

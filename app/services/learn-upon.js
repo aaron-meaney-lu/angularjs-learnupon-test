@@ -173,4 +173,16 @@ angular.module('mainApp')
     this.getUsers = function(cb) {
       $timeout(() => {cb(this.usersList)}, 1000);
     };
+
+    this.getUser = function(id, cb) {
+      let foundUser = null;
+
+      for (user of this.usersList.user) {
+        if (user.id != id) continue;
+
+        foundUser = user;
+      }
+
+      $timeout(() => {cb(foundUser)}, 1000);
+    };
   }]);
