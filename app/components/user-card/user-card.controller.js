@@ -6,6 +6,8 @@ angular
 
       $ctrl.loadStatus = 'unloaded';
 
+      $ctrl.extraDetails = false;
+
       $ctrl.$onInit = function() {
         if ($ctrl.user) {
           $ctrl.loadStatus = 'loaded';

@@ -4,6 +4,7 @@ angular
     templateUrl: '/user-card/user-card.template.html',
     controller: 'UserCardController',
     bindings: {
-      user: '<'
+      user: '<',
+      extraDetails: '<'
     }
   });

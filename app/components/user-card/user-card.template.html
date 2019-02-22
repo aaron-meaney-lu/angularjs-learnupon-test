@@ -2,9 +2,17 @@
   <em>{{$ctrl.user.first_name}} {{$ctrl.user.last_name}}</em><br>
   <u>{{$ctrl.user.email}}</u><br>
 
-  <a href="{{$ctrl.links.show}}">[Show Details]</a>
+  <a href="{{$ctrl.links.show}}" ng-show="!$ctrl.extraDetails">[Show Details]</a>
   <a href="{{$ctrl.links.edit}}">[Edit User]</a>
   <a href="{{$ctrl.links.delete}}">[Delete User]</a>
+
+  <span ng-show="$ctrl.extraDetails">
+    <br>
+    <p><b>Enrollments: </b>{{$ctrl.user.number_of_enrollments}}</p>
+    <p><b>Enrollments Accessed: </b>{{$ctrl.user.number_of_enrollments_accessed}}</p>
+    <p><b>User Type: </b>{{$ctrl.user.user_type}}</p>
+    <p><b>Account Enabled: </b>{{$ctrl.user.enabled}}</p>
+  </span>
 </span>
 <span ng-show="$ctrl.loadStatus === 'unloaded'">
   Loading...
