@@ -1,11 +1,14 @@
 angular.module('mainApp')
   .controller('UserListController',['$scope', 'LearnUponService',
     function($scope, LearnUponService) {
-      $scope.users = [];
+      $ctrl = this;
 
-      $scope.getUsers = function() {
+      $ctrl.loaded = false;
+
+      $ctrl.$onInit = function() {
         LearnUponService.getUsers(function (users) {
-          $scope.users = users.user;
+          $ctrl.users = users.user;
+          $ctrl.loaded = true;
         });
       };
     }
