@@ -1,11 +1,16 @@
 <span ng-show="$ctrl.loadStatus === 'loaded'">
-  <form novalidate>
-    <label>First Name: <input type="text" ng-model="$ctrl.user.first_name"></label><br>
-    <label>Last Name: <input type="text" ng-model="$ctrl.user.last_name"></label><br>
-    <label>E-Mail: <input type="text" ng-model="$ctrl.user.email"></label><br>
-    <label>Account Enabled: <input type="checkbox" ng-model="$ctrl.user.enabled"></label><br>
+  <form name='editUserForm'>
+    <label>First Name: <input name="firstNameInput" type="text" ng-model="$ctrl.user.first_name" ng-maxlength="35" required></label><br>
+    <label>Last Name: <input name="lastNameInput" type="text" ng-model="$ctrl.user.last_name" ng-maxlength="35" required></label><br>
+    <label>E-Mail: <input name="emailInput" type="email" ng-model="$ctrl.user.email" required></label><br>
+    <label>Account Enabled: <input name="enableInput" type="checkbox" ng-model="$ctrl.user.enabled"></label><br>
 
-    <input type="button" ng-click="$ctrl.updateUser()" value="Update"/>
+    <input type="button" ng-disabled="!editUserForm.$valid" ng-click="$ctrl.updateUser()" value="Update User"/>
+
+    <br><em>First Name Validation: {{editUserForm.firstNameInput.$valid}}</em>
+    <br><em>Last Name Validation: {{editUserForm.lastNameInput.$valid}}</em>
+    <br><em>E-Mail Validation: {{editUserForm.emailInput.$valid}}</em>
+    <br><em>Account Validation: {{editUserForm.enableInput.$valid}}</em>
   </form>
 
   <a href="{{$ctrl.links.show}}">[Show Details]</a>
